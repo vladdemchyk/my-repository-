@@ -1,24 +1,21 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Diagnostics.Contracts;
 
-namespace hw4
+namespace lab
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var user = new User();
-            user.Surname = "sdsa";
-            user.Name = "sdsa";
-            user.Login = "sdsa";
-            user.Age = 33;
+            MyList<int> list = new MyList<int>();
+            list.Add(1);
+            list.Add(2);
 
-            foreach (PropertyInfo property in user.GetType().GetProperties())
+            foreach (int item in list.GetArray())
             {
-                Console.WriteLine(property.Name + " : " + property.GetValue(user, null));
+                Console.WriteLine(item);
             }
 
-            Console.ReadLine();
+            Console.WriteLine(MyClass<List<int>>.FactoryMethod());
         }
     }
 }
